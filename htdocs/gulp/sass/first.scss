@@ -1,0 +1,9 @@
+$font_color:black;
+
+#container {
+    color: $font_color;
+    font-family: Verdana;
+    p {
+        color: lighten($font_color, 20%)
+    }
+}

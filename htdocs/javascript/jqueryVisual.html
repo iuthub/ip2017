@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery Visual</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+    <script>
+        $(function(){
+
+
+            $('#red_box').draggable();
+
+            $('#blue_box').droppable({
+                drop: function(ev, ui) {
+                    ui.draggable.effect('shake');
+                }
+            });
+
+            $('#btnEffect').click(function(){
+
+                    $('#red_box').effect('explode', {
+                        pieces: 20
+                    });
+
+            });
+
+            $('#txtSearch').autocomplete({
+                appendTo: '#urbanDic',
+                search: function(ev, ui) {
+                    $.getJSON('http://api.urbandictionary.com/v0/define?term=' + ui.value, function(resp){
+                        var vals=[];
+                        for (var i=0;i<resp.list.length;i++){
+                            vals.push(resp.list[i].definition);
+                        }
+                        console.log(vals);
+                        $('#txtSearch').autocomplete('option','source', vals);
+                    })
+                }
+            });
+        });
+    </script>
+    <style>
+        #red_box {
+            box-sizing: border-box;
+            width: 30px;
+            height: 30px;
+            background: red;
+            border: 2px solid black;
+        }
+
+        #blue_box {
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            background: blue;
+            border: 2px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Hello World!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero nisi, facere numquam totam, quae est, asperiores nam porro et dignissimos neque in alias unde quaerat aliquid? Eaque dignissimos optio saepe?</p>
+        <ul class="sortable">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+            <li>Item 6</li>
+            <li>Item 7</li>
+            <li>Item 8</li>
+            <li>Item 9</li>
+            <li>Item 10</li>
+        </ul>
+
+
+        <div id="red_box"></div>
+        <div id="blue_box"></div>
+        <input type="text" name="txtSearch" id="txtSearch">
+        <div id="urbanDic">
+
+        </div>
+        <button id="btnEffect">Effect</button>
+    </div>
+
+</body>
+</html>

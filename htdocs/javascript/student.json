@@ -1,0 +1,15 @@
+{
+ "groupName": "15-1",
+ "students": [
+    {
+        "name": "Sarvar", "email": "s.abdullaev@inha.uz"
+    },
+    {
+        "name": "Alisher", "email": "a.kodirov@inha.uz"
+    },
+    {
+        "name": "Maftuna", "email": "m.bozarova@inha.uz"
+    }
+
+ ]
+}
