@@ -7,35 +7,53 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
     <script>
+        // $(document).ready(function(){});
         $(function(){
 
+            $('#btnHide').click(function(){
+                $('#title').effect('highlight');
+                $('#blue_box').animate({backgroundColor: 'yellow', width: '50px', height: '50px'}, 1000);
+            });
 
-            $('#red_box').draggable();
+            $('#btnEmpty').click(function(){
+                $('#story').empty();
+            })
 
-            $('#blue_box').droppable({
-                drop: function(ev, ui) {
-                    ui.draggable.effect('shake');
+            $('.sortable').sortable({
+                update: function(ev, ui) {
+
                 }
             });
 
-            $('#btnEffect').click(function(){
-
-                    $('#red_box').effect('explode', {
-                        pieces: 20
-                    });
-
+            $('#red_box').draggable({
+                stop: function(ev, ui) {
+                    // $(this).effect('shake');
+                }
             });
+
+            $('#blue_box').droppable({
+                drop: function(ev, ui) {
+                    ui.draggable.draggable('option', 'containment', this);
+                }
+            });
+
+            // $('#btnEffect').click(function(){
+
+            //         $('#red_box').effect('explode', {
+            //             pieces: 20
+            //         });
+
+            // });
 
             $('#txtSearch').autocomplete({
                 appendTo: '#urbanDic',
-                search: function(ev, ui) {
-                    $.getJSON('http://api.urbandictionary.com/v0/define?term=' + ui.value, function(resp){
+                source: function(request, response) {
+                    $.getJSON('http://api.urbandictionary.com/v0/define?term=' + request.term, function(resp){
                         var vals=[];
                         for (var i=0;i<resp.list.length;i++){
                             vals.push(resp.list[i].definition);
                         }
-                        console.log(vals);
-                        $('#txtSearch').autocomplete('option','source', vals);
+                        response(vals);
                     })
                 }
             });
@@ -63,7 +81,10 @@
 <body>
     <div class="container">
         <h1 id="title">Hello World!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero nisi, facere numquam totam, quae est, asperiores nam porro et dignissimos neque in alias unde quaerat aliquid? Eaque dignissimos optio saepe?</p>
+        <button id="btnHide">Hide</button>
+        <p id="story">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero nisi, facere numquam totam, quae est, asperiores nam porro et dignissimos neque in alias unde quaerat aliquid? Eaque dignissimos optio saepe?</p>
+        <button id="btnEmpty">Empty</button>
+
         <ul class="sortable">
             <li>Item 1</li>
             <li>Item 2</li>
@@ -79,7 +100,10 @@
 
 
         <div id="red_box"></div>
+
         <div id="blue_box"></div>
+
+
         <input type="text" name="txtSearch" id="txtSearch">
         <div id="urbanDic">
 

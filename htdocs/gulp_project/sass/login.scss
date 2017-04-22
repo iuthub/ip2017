@@ -1,0 +1,14 @@
+$font: Verdana, serif;
+$fontSize: 12pt;
+$fontColor: black;
+
+#login_form {
+    font-size: $fontSize;
+    font-family: $font;
+    color: $fontColor;
+
+    a {
+        color: lighten($fontColor, 50%);
+        font-size: $fontSize;
+    }
+}

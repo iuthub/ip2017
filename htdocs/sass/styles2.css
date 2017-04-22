@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Sarvar';
+    src: url(https://www.fontsquirrel.com/fonts/download/acherus-grotesque);
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    transition-property: all;
+    transition-duration: 2s;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 2s;
+}
+
+h1:hover {
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+}
+
+div.container {
+    width: 700px;
+    padding: 10px;
+    border: 2px solid black;
+    font-family: 'Sarvar', sans-serif;
+}

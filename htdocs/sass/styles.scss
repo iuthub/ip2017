@@ -1,0 +1,17 @@
+$theme-color: blue;
+$background-color: lighten($theme-color, 30%);
+$list-color: lighten($theme-color, 20%);
+
+
+.container {
+    background-color: $background-color;
+    color: $theme-color;
+
+    ul {
+        li {
+            color: $list-color;
+        }
+
+    }
+
+}

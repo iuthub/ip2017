@@ -1,4 +1,4 @@
-<?php 
+<?php
 class Calculator {
 	public function __constructor() {
 
@@ -18,4 +18,4 @@ $soapServer=new SoapServer(NULL, $options);
 $soapServer->setClass('Calculator');
 
 $soapServer->handle();
- ?>
+?>

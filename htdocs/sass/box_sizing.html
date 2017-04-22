@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Sizing</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Passion+One|Quattrocento+Sans|Shrikhand');
+
+        @font-face {
+            font-family: kaushan;
+            src: url('./fonts/KaushanScript-Regular.otf');
+            font-style: normal;
+            font-weight: normal;
+        }
+
+        .contentBox {
+            background-color: blue;
+            box-sizing: content-box;
+            padding: 10px;
+            border: 3px solid black;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+
+        .borderBox {
+            background-color: red;
+            box-sizing: border-box;
+            padding: 10px;
+            border: 3px solid black;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            transition-property: all;
+            transition-duration: 4s;
+        }
+
+        .title {
+            font-family: 'Passion One', cursive;
+            font-size: 14pt;
+            padding: 5px;
+            border: 3px solid gray;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px lightgray;
+            background: -webkit-gradient(linear, 0 0, 100% 0, from(#0f0), to(#f00));
+            transition-property: all;
+            transition-duration: 2s;
+        }
+
+        .title:hover {
+            transform: rotate(-180deg) skewX(10deg);
+            -webkit-transform: rotate(-180deg) skewX(10deg);
+        }
+
+        .two_col {
+            column-count: 2;
+            column-width: 250px;
+            column-gap: 10px;
+            column-rule: 3px solid black;
+            -webkit-column-count: 2;
+            -webkit-column-width: 250px;
+            -webkit-column-gap: 10px;
+            -webkit-column-rule: 3px solid black;
+            box-sizing: border-box;
+            width: 520px;
+        }
+
+
+    </style>
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script> -->
+   <!--  <script>
+        var rotated=false;
+        function rotate(){
+           if (rotated) {
+                $('.borderBox').css('transform', 'rotate(-180deg)');
+                rotated=false;
+           } else {
+                $('.borderBox').css('transform', 'rotate(180deg)');
+                rotated=true;
+           }
+
+        }
+
+    </script> -->
+</head>
+<body>
+    <h1 class="title">Hello World</h1>
+
+
+    <div class="contentBox"></div>
+    <div class="borderBox"></div>
+
+
+
+
+    <!-- <button onclick="rotate();">Rotate</button> -->
+    <div class="two_col">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto magni harum eius veritatis delectus. Quidem debitis vitae fugit iusto sed saepe, consequuntur. Laudantium asperiores, alias soluta, facere amet deserunt aperiam.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores obcaecati enim voluptatum necessitatibus sint natus minus nisi deleniti esse! Animi soluta adipisci illum laborum quae itaque ratione maiores numquam saepe.
+    </div>
+
+</body>
+</html>
