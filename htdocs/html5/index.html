@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 5 Examples</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+</head>
+<body>
+    <!-- <div width="200" height="200" id="map"></div> -->
+
+    <input list="lstStudents" />
+
+    <datalist id="lstStudents">
+        <option value="Sarvar"></option>
+        <option value="Aziz"></option>
+        <option value="Zafar"></option>
+    </datalist>
+
+    <div id="primes">
+
+    </div>
+    <canvas id="canv" width="500" height="500">
+        Canvas is not supported.
+    </canvas>
+    <script>
+        var canv=$('#canv')[0]; // $(document.getElementById('canv'));
+        var ctx=canv.getContext('2d');
+        var g=ctx.createLinearGradient(10,10,200,10);
+            g.addColorStop(0,'white');
+            g.addColorStop(.5, 'yellow');
+            g.addColorStop(1, 'purple');
+
+        var img=new Image();
+            img.src='pattern.jpg';
+
+        var p=ctx.createPattern(img, 'repeat');
+
+
+        ctx.fillStyle=p;
+        ctx.fillRect(10,10,200,200);
+
+
+        //drawing a circle using path
+        ctx.strokeStyle='red';
+        ctx.fillStyle='yellow';
+
+        ctx.lineWidth=10;
+        ctx.lineJoin='miter';
+
+        ctx.beginPath();
+        ctx.moveTo(250,250);
+
+        var r=50;
+        var stepSize=Math.PI/5;
+        for (var i=0;i<=2*Math.PI-stepSize;i+=stepSize) {
+            ctx.lineTo(r*Math.cos(i)+250, r*Math.sin(i)+250);
+        }
+
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+
+        var w=new Worker('prime.js');
+
+            w.onmessage=function(resp) {
+                $('#primes').append(resp.data + "<br>");
+
+                if (resp.data>4000) this.terminate();
+            }
+
+        //     ctx.fillStyle=g;
+        //     ctx.fillRect(10, 10, 120, 120);
+
+        //     ctx.moveTo(20, 20);
+        //     ctx.strokeStyle='red';
+        //     ctx.strokeRect(20,20, 100, 100);
+
+        //     ctx.fillStyle=p;
+        //     ctx.strokeStyle='blue';
+        //     ctx.lineWidth=3;
+        //     ctx.lineJoin='round';
+
+        //     ctx.beginPath();
+        //     ctx.moveTo(0, 0);
+        //     ctx.lineTo(10,60);
+        //     ctx.lineTo(200, 200);
+        //     ctx.closePath();
+        //     ctx.stroke();
+        //     ctx.fill();
+
+    </script>
+</body>
+</html>
