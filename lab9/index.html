@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/todo.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12"><h1>To-Do List</h1></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <form class="form-inline" action>
+                    <div class="form-group">
+                    <label for="txtTask">Task:</label>
+                        <input type="text" class="form-control" id="txtTask">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
+                    <button type="button" class="btn btn-default" id="btnDelete">Delete</button>
+                </form>
+                <fieldset>
+                    <legend>To-Do List</legend>
+                    <ul id="lstTasks">
+                    </ul>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
